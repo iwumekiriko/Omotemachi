@@ -1,0 +1,44 @@
+#Ignore build folders
+Properties/
+src/
+out/
+/bin/
+bin/
+obj/
+/obj/
+Migrations/
+/Migrations/
+uploads/
+node_modules/
+
+#Ignore db/log files
+*.db*
+*.db3
+*.log
+
+#Ignore scripts/txt files
+*.ps1
+*.txt
+
+#Ignore vscode folders
+/.vscode/
+/.vs/
+.vs/
+
+#Ignore misc files
+*.dll
+*.exe
+*.mp3
+*.http
+
+#Ignore sln file
+*.sln
+
+#Ignore editor settings
+.editorconfig
+
+#Ignore csproj.user files
+*.user
+
+#Ignore .pubxml
+*.pubxml
