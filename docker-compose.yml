@@ -1,6 +1,5 @@
 services:
-  jesterbotapi:
-    image: iwumekiriko/jester_bot_api
+  dell-arte-api:
     build:
       context: .
       dockerfile: Dockerfile
