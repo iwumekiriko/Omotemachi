@@ -1,5 +1,5 @@
 services:
-  dell-arte-api:
+  omotemachi:
     build:
       context: .
       dockerfile: Dockerfile
