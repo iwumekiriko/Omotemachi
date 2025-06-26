@@ -77,7 +77,7 @@ public class CCGService(
     public async Task<string?> GetRandomCardAssetUrl()
     {
         return await _context.Cards
-            .Where(с => с.AssetsUrls.Count > 0)
+            .Where(c => c.AssetsUrls.Count > 0 && c.Status == SuggestionStatus.APPROVED)
             .SelectMany(c => c.AssetsUrls)
             .OrderBy(o => Guid.NewGuid())
             .FirstOrDefaultAsync();
