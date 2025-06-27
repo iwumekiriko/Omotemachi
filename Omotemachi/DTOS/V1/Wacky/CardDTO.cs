@@ -1,5 +1,4 @@
 ﻿using Omotemachi.Models.V1.Wacky.CCG;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Omotemachi.DTOS.V1.Wacky;
 

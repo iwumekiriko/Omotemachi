@@ -38,10 +38,16 @@ public class CCGController(ICCGService ccgService) : ControllerBase
     {
         return Ok(await _ccgService.GetAllCardsAsync());
     }
-    [HttpPost("cards")]
+    [HttpPost("cards/new/single")]
     public async Task<IActionResult> PostCard([FromBody] CardDTO card)
     {
         await _ccgService.CreateCardAsync(card);
+        return Ok(new { Success = true, Status = StatusCodes.Status200OK });
+    }
+    [HttpPost("cards/new/multiple")]
+    public async Task<IActionResult> PostCards([FromBody] List<CardDTO> cards)
+    {
+        foreach (CardDTO card in cards) { await _ccgService.CreateCardAsync(card); }
         return Ok(new { Success = true, Status = StatusCodes.Status200OK });
     }
     [HttpGet("cards/{guildId}/{userId}")]
