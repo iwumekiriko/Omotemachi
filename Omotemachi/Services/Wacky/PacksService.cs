@@ -2,6 +2,7 @@
 using Omotemachi.Models.V1.Wacky.CCG;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Concurrent;
+using Omotemachi.DTOS.V1.Wacky;
 
 namespace Omotemachi.Services.Wacky;
 
@@ -10,6 +11,7 @@ public interface IPacksService
     Task<int?> GetGeneralPackId();
     Task<Pack?> GetPackAsync(int packId);
     Task<List<int>> GetRandomPackCardsIds(int packId, int amount);
+    Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId);
     Task<int> UpdateUserPackAmount(long guildId, long userId, int packId, int amount);
 }
 public class PacksService(
@@ -66,6 +68,29 @@ public class PacksService(
 
         return drops;
     }
+
+    public async Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId)
+    {
+        var packs = await _context.Packs
+            .Where(p => p.Active)
+            .ToListAsync();
+
+        var userPacks = await _context.UserPacks
+            .Where(up => up.GuildId == guildId && up.UserId == userId)
+            .ToListAsync();
+
+        var upDict = userPacks
+            .GroupBy(up => up.PackId)
+            .ToDictionary(g => g.Key, g => g.First().Amount);
+
+        return [.. packs.Select(p => new PackDTO
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Amount = upDict.TryGetValue(p.Id, out var amount) ? amount : 0
+        })];
+    }
+
     public async Task<int> UpdateUserPackAmount(long guildId, long userId, int packId, int amount)
     {
         var uPack = await _context.UserPacks

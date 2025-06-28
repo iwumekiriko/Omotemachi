@@ -60,11 +60,10 @@ public class CCGController(ICCGService ccgService) : ControllerBase
     {
         return Ok(await _ccgService.GetRandomCardAssetUrl());
     }
-    [HttpGet("cards/packs")]
-    public async Task<IActionResult> GetAvailablePacks()
+    [HttpGet("cards/packs/{guildId}/{userId}")]
+    public async Task<IActionResult> GetAvailablePacks(long guildId, long userId)
     {
-        var packs = await _ccgService.GetAllAvailablePacks();
-        return Ok(packs.ToDictionary(p => p.Id, pack => pack.Name));
+        return Ok(await _ccgService.GetAllAvailablePacks(guildId, userId));
     }
     [HttpPut("cards/packs/update/{guildId}/{userId}/{packId}")]
     public async Task<IActionResult> UpdatePacksCount(long guildId, long userId, int packId, int amount)

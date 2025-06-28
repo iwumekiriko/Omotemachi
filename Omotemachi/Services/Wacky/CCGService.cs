@@ -15,7 +15,7 @@ public interface ICCGService
     Task<Card?> GetCardByIdAsync(int id);
     Task<Card> CreateCardAsync(CardDTO card);
     Task<string?> GetRandomCardAssetUrl();
-    Task<List<Pack>> GetAllAvailablePacks();
+    Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId);
     Task<List<UserCardDTO>> GetUserCollection(long guildId, long userId);
     Task<int> UpdatePacksCount(long guildId, long userId, int packId, int amount);
     Task<List<UserCardDTO>> GetCardsFromPack(long guildId, long userId, int packId, int packAmount);
@@ -83,11 +83,9 @@ public class CCGService(
             .OrderBy(o => Guid.NewGuid())
             .FirstOrDefaultAsync();
     }
-    public async Task<List<Pack>> GetAllAvailablePacks()
+    public async Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId)
     {
-        return await _context.Packs
-            .Where(p => p.Active)
-            .ToListAsync();
+        return await _packService.GetAllAvailablePacks(guildId, userId);
     }
     public async Task<List<UserCardDTO>> GetUserCollection(long guildId, long userId)
     {
