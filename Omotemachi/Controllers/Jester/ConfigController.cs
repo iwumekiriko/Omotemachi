@@ -17,7 +17,8 @@ public class ConfigController(
     IConfigService<TicketsConfig> ticketsConfigService,
     IConfigService<VoiceConfig> voiceConfigService,
     IConfigService<EconomyConfig> economyConfigService,
-    IConfigService<QuestsConfig> questsConfigService
+    IConfigService<QuestsConfig> questsConfigService,
+    IConfigService<PacksConfig> packsConfigService
 ) : ControllerBase
 {
     private readonly IConfigService<ExperienceConfig> _expConfigService = expConfigService;
@@ -30,6 +31,7 @@ public class ConfigController(
     private readonly IConfigService<VoiceConfig> _voiceConfigService = voiceConfigService;
     private readonly IConfigService<EconomyConfig> _economyConfigService = economyConfigService;
     private readonly IConfigService<QuestsConfig> _questsConfigService = questsConfigService;
+    private readonly IConfigService<PacksConfig> _packsConfigService = packsConfigService;
 
     [HttpGet("experience/{guildId}")]
     public async Task<IActionResult> ExperienceConfig(long guildId)
@@ -150,6 +152,18 @@ public class ConfigController(
     public async Task<IActionResult> QuestsConfig(QuestsConfig config)
     {
         await _questsConfigService.UpdateConfigAsync(config);
+        return Ok(new { Success = true, Status = StatusCodes.Status200OK });
+    }
+    [HttpGet("packs/{guildId}")]
+    public async Task<IActionResult> PacksConfig(long guildId)
+    {
+        var config = await _packsConfigService.GetOrCreateConfigAsync(guildId);
+        return Ok(config);
+    }
+    [HttpPut("packs")]
+    public async Task<IActionResult> PacksConfig(PacksConfig config)
+    {
+        await _packsConfigService.UpdateConfigAsync(config);
         return Ok(new { Success = true, Status = StatusCodes.Status200OK });
     }
 }

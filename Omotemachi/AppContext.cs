@@ -50,6 +50,7 @@ public class AppContext: DbContext
     public virtual DbSet<LootboxesConfig> LootboxesConfigs { get; set; }
     public virtual DbSet<EconomyConfig> EconomyConfigs { get; set; }
     public virtual DbSet<QuestsConfig> QuestsConfigs { get; set; }
+    public virtual DbSet<PacksConfig> PacksConfigs { get; set; }
 
     // Inventory
     public virtual DbSet<Role> Roles { get; set; }
