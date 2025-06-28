@@ -6,6 +6,7 @@ public class Series
 {
     public int Id {  get; set; }
     public required string Name { get; set; }
+    public List<string> Aliases { get; set; } = [];
 
     public DateTimeOffset CreatedAt { get; set; } = TimeConverter.GetCurrentTime();
 }
