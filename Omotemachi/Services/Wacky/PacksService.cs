@@ -9,7 +9,7 @@ public interface IPacksService
 {
     Task<int?> GetGeneralPackId();
     Task<Pack?> GetPackAsync(int packId);
-    Task<List<int>> GetPackCardsIds(int packId, int amount);
+    Task<List<int>> GetRandomPackCardsIds(int packId, int amount);
     Task<int> UpdateUserPackAmount(long guildId, long userId, int packId, int amount);
 }
 public class PacksService(
@@ -49,7 +49,7 @@ public class PacksService(
         return pack;
     }
 
-    public async Task<List<int>> GetPackCardsIds(int packId, int amount)
+    public async Task<List<int>> GetRandomPackCardsIds(int packId, int amount)
     {
         var pack = await GetPackAsync(packId);
         if (pack == null)

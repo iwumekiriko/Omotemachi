@@ -17,6 +17,7 @@ public interface ICCGService
     Task<string?> GetRandomCardAssetUrl();
     Task<List<Pack>> GetAllAvailablePacks();
     Task<List<UserCardDTO>> GetUserCollection(long guildId, long userId);
+    Task<int> UpdatePacksCount(long guildId, long userId, int packId, int amount);
     Task<List<UserCardDTO>> GetCardsFromPack(long guildId, long userId, int packId, int packAmount);
 }
 public class CCGService(
@@ -44,7 +45,7 @@ public class CCGService(
     public async Task<Series> CreateSeriesAsync(string name)
     {
         var series = new Series { Name = name };
-        _context.Series.Add(series);
+        _context.Series.Add(series); 
         await _context.SaveChangesAsync();
 
         return series;
@@ -101,13 +102,17 @@ public class CCGService(
 
         return [.. userCards.Select(uc => MapToDTO(uc))];
     }
-    public async Task<List<UserCardDTO>> GetCardsFromPack(long guildId, long userId, int packId, int packAmount)
+    public async Task<int> UpdatePacksCount(long guildId, long userId, int packId, int amount)
     {
-        await _packService.UpdateUserPackAmount(guildId, userId, packId, -packAmount);
+        return await _packService.UpdateUserPackAmount(guildId, userId, packId, amount);
+    }
+    public async Task<List<UserCardDTO>> GetCardsFromPack(long guildId, long userId, int packId, int amount)
+    {
+        await _packService.UpdateUserPackAmount(guildId, userId, packId, -amount);
 
         int cardsInPackAmount = int.Parse(_config["CCG:CardsInPackAmount"]!);
-        int totalCardsAmount = cardsInPackAmount * packAmount;
-        var cardsIds = await _packService.GetPackCardsIds(packId, totalCardsAmount);
+        int totalCardsAmount = cardsInPackAmount * amount;
+        var cardsIds = await _packService.GetRandomPackCardsIds(packId, totalCardsAmount);
 
         var drops = await ProcessPackCardIds(guildId, userId, cardsIds);
         return drops;
