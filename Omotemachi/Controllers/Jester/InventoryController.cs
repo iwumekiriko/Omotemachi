@@ -9,6 +9,8 @@ using Omotemachi.Services.Jester;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 using Omotemachi.Models.V1.Statistics;
+using Omotemachi.Services.Wacky;
+using System.Runtime.InteropServices;
 
 namespace Omotemachi.Controllers.Jester;
 [ApiController]
@@ -17,12 +19,14 @@ namespace Omotemachi.Controllers.Jester;
 public class InventoryController(
     IMembersService membersService,
     IInventoryService inventoryService,
-    IStatisticsService statistics
+    IStatisticsService statistics,
+    IPacksService packsService
 ) : ControllerBase
 {
     private readonly IMembersService _membersService = membersService;
     private readonly IInventoryService _inventoryService = inventoryService;
     private readonly IStatisticsService _statistics = statistics;
+    private readonly IPacksService _packsService = packsService;
 
     [HttpGet]
     public async Task<IActionResult> GetInventory(long guildId, long userId)
@@ -74,6 +78,7 @@ public class InventoryController(
                         quantity = ieb.First().Quantity
                     }
             ),
+            packs = await _packsService.GetAllAvailablePacks(guildId, userId)
         };
 
         return Ok(response);
