@@ -66,7 +66,20 @@ public class CCGController(ICCGService ccgService) : ControllerBase
         var packs = await _ccgService.GetAllAvailablePacks();
         return Ok(packs.ToDictionary(p => p.Id, pack => pack.Name));
     }
-    [HttpPost("cards/pack/{guildId}/{userId}/{packId}")]
+    [HttpPut("cards/packs/update/{guildId}/{userId}/{packId}")]
+    public async Task<IActionResult> UpdatePacksCount(long guildId, long userId, int packId, int amount)
+    {
+        try
+        {
+            var left = await _ccgService.UpdatePacksCount(guildId, userId, packId, amount);
+            return Ok(new { left });
+        }
+        catch (NotEnoughPacksException ex)
+        {
+            return BadRequest(new { ex.Code, ex.Name, ex.Amount, ex.Needed });
+        }
+    }
+    [HttpPost("cards/packs/open/{guildId}/{userId}/{packId}")]
     public async Task<IActionResult> OpenCardPacks(long guildId, long userId, int packId, int amount = 1)
     {
         try
