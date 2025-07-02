@@ -3,6 +3,7 @@ using Asp.Versioning;
 using Omotemachi.Services.Wacky;
 using Omotemachi.DTOS.V1.Wacky;
 using Omotemachi.Exceptions.Wacky.CCG;
+using Omotemachi.Models.V1;
 
 namespace Omotemachi.Controllers.Wacky;
 [ApiController]
@@ -50,27 +51,67 @@ public class CCGController(ICCGService ccgService) : ControllerBase
         foreach (CardDTO card in cards) { await _ccgService.CreateCardAsync(card); }
         return Ok(new { Success = true, Status = StatusCodes.Status200OK });
     }
-    [HttpGet("cards/{guildId}/{userId}")]
+    [HttpGet("cards/collection/{guildId}/{userId}")]
     public async Task<IActionResult> GetUserCardCollection(long guildId, long userId)
     {
-        return Ok(await _ccgService.GetUserCollection(guildId, userId));
+        return Ok(await _ccgService.GetUserCollectionAsync(guildId, userId));
+    }
+    [HttpGet("cards/collection/{guildId}/{userId}/search")]
+    public async Task<IActionResult> GetUserCardsByInput(long guildId, long userId, string? input)
+    {
+        return Ok(await _ccgService.GetUserCardsByNameAsync(guildId, userId, input));
+    }
+    [HttpGet("cards/collection/{guildId}/{userId}/{id}")]
+    public async Task<IActionResult> GetUserCardById(long guildId, long userId, int id)
+    {
+        return Ok(await _ccgService.GetUserCardDTOByIdAsync(guildId, userId, id));
+    }
+    [HttpPost("cards/collection/{guildId}/{userId}/{id}/asset/{index}")]
+    public async Task<IActionResult> UpdateUserCardAssetIndex(long guildId, long userId, int id, int index)
+    {
+        await _ccgService.UpdateUserCardAssetIndexAsync(guildId, userId, id, index);
+        return Ok(new { Success = true, Status = StatusCodes.Status200OK });
+    }
+    [HttpPost("cards/collection/{guildId}/{userId}/give/{recieverId}/{cardId}")]
+    public async Task<IActionResult> GiveCardsToMember(long guildId, long userId, long recieverId, int cardId, int amount)
+    {
+        try
+        {
+            await _ccgService.GiveCardsToMemberAsync(guildId, userId, recieverId, cardId, amount);
+            return Ok(new { Success = true, Status = StatusCodes.Status200OK });
+        }
+        catch (NotEnoughCardsException ex)
+        {
+            return BadRequest(new { ex.Code, ex.Name, ex.SeriesName, ex.Amount, ex.Needed });
+        }
+        catch (GiveCommandTimeoutException ex)
+        {
+            return BadRequest(new { ex.Code, ex.TimeLeft });
+        }
     }
     [HttpGet("cards/random-asset")]
     public async Task<IActionResult> GetRandomCardAssetUrl()
     {
-        return Ok(await _ccgService.GetRandomCardAssetUrl());
+        return Ok(await _ccgService.GetRandomCardAssetUrlAsync());
     }
     [HttpGet("cards/packs/{guildId}/{userId}")]
-    public async Task<IActionResult> GetAvailablePacks(long guildId, long userId)
+    public async Task<IActionResult> GetAvailablePacks(
+        long guildId, long userId)
     {
-        return Ok(await _ccgService.GetAllAvailablePacks(guildId, userId));
+        return Ok(await _ccgService.GetAllAvailablePacksAsync(guildId, userId));
+    }
+    [HttpGet("cards/packs/{guildId}/{userId}/search")]
+    public async Task<IActionResult> GetAvailablePacksByName(
+        long guildId, long userId, string? input)
+    {
+        return Ok(await _ccgService.GetAllAvailablePacksByNameAsync(guildId, userId, input));
     }
     [HttpPut("cards/packs/update/{guildId}/{userId}/{packId}")]
     public async Task<IActionResult> UpdatePacksCount(long guildId, long userId, int packId, int amount)
     {
         try
         {
-            var left = await _ccgService.UpdatePacksCount(guildId, userId, packId, amount);
+            var left = await _ccgService.UpdatePacksCountAsync(guildId, userId, packId, amount);
             return Ok(new { left });
         }
         catch (NotEnoughPacksException ex)
@@ -83,7 +124,7 @@ public class CCGController(ICCGService ccgService) : ControllerBase
     {
         try
         {
-            var drops = await _ccgService.GetCardsFromPack(guildId, userId, packId, amount);
+            var drops = await _ccgService.GetCardsFromPackAsync(guildId, userId, packId, amount);
             return Ok(drops);
         }
         catch (NotEnoughPacksException ex)

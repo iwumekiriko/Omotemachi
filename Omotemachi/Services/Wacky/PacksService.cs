@@ -11,7 +11,7 @@ public interface IPacksService
     Task<int?> GetGeneralPackId();
     Task<Pack?> GetPackAsync(int packId);
     Task<List<int>> GetRandomPackCardsIds(int packId, int amount);
-    Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId);
+    Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId, string? input);
     Task<int> UpdateUserPackAmount(long guildId, long userId, int packId, int amount);
 }
 public class PacksService(
@@ -69,14 +69,16 @@ public class PacksService(
         return drops;
     }
 
-    public async Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId)
+    public async Task<List<PackDTO>> GetAllAvailablePacks(long guildId, long userId, string? input = null)
     {
+        input = input?.ToLower();
+
         var packs = await _context.Packs
-            .Where(p => p.Active)
+            .Where(p => p.Active && EF.Functions.Like(p.Name.ToLower(), $"%{input}%"))
             .ToListAsync();
 
         var userPacks = await _context.UserPacks
-            .Where(up => up.GuildId == guildId && up.UserId == userId)
+            .Where(up => up.GuildId == guildId && up.UserId == userId && up.Amount > 0)
             .ToListAsync();
 
         var upDict = userPacks
