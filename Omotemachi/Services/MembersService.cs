@@ -38,7 +38,9 @@ public class MembersService(
     Dictionary<string, int> voiceSessions,
     IStatisticsService statistics,
     ITopService topService,
-    IUserSettingsService userSettings
+    IUserSettingsService userSettings,
+    IDuetsService duetsService,
+    IInventoryService inventoryService
 ) : ServiceBase(context, logger), IMembersService
 {
     private readonly IConfigService<ExperienceConfig> _expConfigService = expConfigService;
@@ -46,6 +48,8 @@ public class MembersService(
     private readonly IStatisticsService _statistics = statistics;
     private readonly ITopService _topService = topService;
     private readonly IUserSettingsService _userSettings = userSettings;
+    private readonly IDuetsService _duetsService = duetsService;
+    private readonly IInventoryService _inventoryService = inventoryService;
 
     public Member GetMember(long guildId, long userId)
     {
@@ -101,13 +105,19 @@ public class MembersService(
             UserId = member.UserId,
             User = member.User,
             Active = member.Active,
+
             Experience = member.Experience,
             ExpMultiplier = member.ExpMultiplier,
-            Coins = member.Coins,
 
+            Coins = member.Coins,
             Crystals = member.Crystals,
+
             MessageCount = messageStatistics.MessagesWritenCount,
             VoiceTime = voiceStatistics.VoiceTimeMuted + voiceStatistics.VoiceTimeUnMuted,
+
+            Duet = await _duetsService.GetDuet(guildId, userId),
+            ActiveExpBooster = await _inventoryService.GetActiveBooster(guildId, userId),
+
             JoinedAt = member.JoinedAt,
             IsBot = member.IsBot,
         };

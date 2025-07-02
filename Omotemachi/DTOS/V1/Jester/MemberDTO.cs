@@ -1,4 +1,6 @@
 ﻿using Omotemachi.Models.V1;
+using Omotemachi.Models.V1.Jester;
+using Omotemachi.Models.V1.Jester.Items;
 
 namespace Omotemachi.DTOS.V1.Jester;
 
@@ -16,6 +18,8 @@ public class MemberDTO
     public int Crystals { get; set; } = 0;
     public int MessageCount { get; set; } = 0;
     public long VoiceTime { get; set; } = 0;
+    public Duet? Duet { get; set; }
+    public ActiveExpBooster? ActiveExpBooster { get; set; }
     public DateTime? JoinedAt { get; set; } = DateTime.Now;
     public bool IsBot { get; set; } = false;
 }
