@@ -83,6 +83,7 @@ public class AppContext: DbContext
     public virtual DbSet<UserCard> UserCards { get; set; }
     public virtual DbSet<Pack> Packs { get; set; }
     public virtual DbSet<UserPack> UserPacks { get; set; }
+    public virtual DbSet<TimeoutCardCatch> TimeoutCardCatches { get; set; }
 
     // Quests
     public virtual DbSet<Quest> Quests { get; set; }
@@ -135,6 +136,8 @@ public class AppContext: DbContext
             .HasKey(uc => new { uc.CardId, uc.UserId, uc.GuildId });
         modelBuilder.Entity<UserPack>()
             .HasKey(uc => new { uc.PackId, uc.UserId, uc.GuildId });
+        modelBuilder.Entity<TimeoutCardCatch>()
+            .HasKey(tcc => new { tcc.GuildId, tcc.UserId });
         modelBuilder.Entity<LootboxUserData>()
             .Property(b => b.Data)
             .HasConversion(
