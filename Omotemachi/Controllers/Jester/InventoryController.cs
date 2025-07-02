@@ -78,7 +78,7 @@ public class InventoryController(
                         quantity = ieb.First().Quantity
                     }
             ),
-            packs = await _packsService.GetAllAvailablePacks(guildId, userId)
+            packs = await _packsService.GetAllAvailablePacks(guildId, userId, null)
         };
 
         return Ok(response);
