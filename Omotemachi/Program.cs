@@ -1,7 +1,5 @@
-
 using Asp.Versioning;
 using Omotemachi.Extensions;
-using Omotemachi.Models.V1.Wacky.CCG;
 using Omotemachi.Services;
 using Omotemachi.Services.Jester;
 using Omotemachi.Services.Wacky;
@@ -37,6 +35,7 @@ public class Program
         builder.Services.AddScoped<ITopService, TopService>();
         builder.Services.AddScoped<IDNDService, DNDService>();
         builder.Services.AddScoped<ICCGService, CCGService>();
+        builder.Services.AddScoped<IAppaService, AppaService>();
         builder.Services.AddScoped<IPacksService, PacksService>();
         builder.Services.AddHostedService<PackMaintenanceService>();
         builder.Services.AddSingleton<IImageRenderer, ImageRenderer>();

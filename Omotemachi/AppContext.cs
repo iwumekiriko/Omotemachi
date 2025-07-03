@@ -13,6 +13,7 @@ using Omotemachi.Models.V1.Jester;
 using Omotemachi.Models.V1.Logs;
 using Omotemachi.Models.V1.Wacky.CCG;
 using Omotemachi.Models.V1.Statistics;
+using Omotemachi.Models.V1.Wacky.Appa;
 
 namespace Omotemachi;
 
@@ -85,6 +86,11 @@ public class AppContext: DbContext
     public virtual DbSet<UserPack> UserPacks { get; set; }
     public virtual DbSet<TimeoutCardCatch> TimeoutCardCatches { get; set; }
 
+    // APPA [Taiyo Special]
+    public virtual DbSet<Appa> Appas { get; set; }
+    public virtual DbSet<UserAppa> UserAppas { get; set; }
+    public virtual DbSet<TimeoutAppaCatch> TimeoutAppaCatches { get; set; }
+
     // Quests
     public virtual DbSet<Quest> Quests { get; set; }
     public virtual DbSet<UserQuest> UserQuests { get; set; }
@@ -138,6 +144,10 @@ public class AppContext: DbContext
             .HasKey(uc => new { uc.PackId, uc.UserId, uc.GuildId });
         modelBuilder.Entity<TimeoutCardCatch>()
             .HasKey(tcc => new { tcc.GuildId, tcc.UserId });
+        modelBuilder.Entity<UserAppa>()
+            .HasKey(ua => new { ua.GuildId, ua.UserId, ua.AppaId });
+        modelBuilder.Entity<TimeoutAppaCatch>()
+            .HasKey(tac => new { tac.GuildId, tac.UserId });
         modelBuilder.Entity<LootboxUserData>()
             .Property(b => b.Data)
             .HasConversion(
