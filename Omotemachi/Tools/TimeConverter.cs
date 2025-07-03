@@ -9,4 +9,16 @@ public class TimeConverter
         DateTimeOffset utcNow = DateTimeOffset.UtcNow;
         return TimeZoneInfo.ConvertTime(utcNow, _timeZone);
     }
+    public static DateTimeOffset Today
+    {
+        get 
+        {
+            DateTimeOffset utcNow = DateTimeOffset.UtcNow.Date;
+            return TimeZoneInfo.ConvertTime(utcNow, _timeZone);
+        }
+    }
+    public static DateTimeOffset Tomorrow
+    {
+        get => Today.AddDays(1);
+    }
 }
