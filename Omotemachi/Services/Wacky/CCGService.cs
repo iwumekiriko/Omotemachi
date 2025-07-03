@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Omotemachi.Exceptions.Wacky.CCG;
 using Omotemachi.Models.V1.Statistics;
 using Omotemachi.Tools;
-using Omotemachi.Models.V1;
-using NuGet.Protocol;
+using Omotemachi.Exceptions.Wacky;
 
 namespace Omotemachi.Services.Wacky;
 
@@ -123,7 +122,7 @@ public class CCGService(
         var timeout = TimeSpan.FromHours(int.Parse(_config["CCG:GiveCommandHoursTimeout"]!));
 
         if (timeoutData != null && timeSpent <= timeout)
-            throw new GiveCommandTimeoutException(
+            throw new CommandTimeoutException(
                 timeLeft: timeout - timeSpent);
 
         await UpdateUserCardAmount(guildId, userId, cardId, -amount);
