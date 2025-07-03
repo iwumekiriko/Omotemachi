@@ -1,7 +1,7 @@
 ﻿using Omotemachi.Tools;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Omotemachi.Models.V1;
+namespace Omotemachi.Models.V1.Wacky.CCG;
 
 public class TimeoutCardCatch
 {

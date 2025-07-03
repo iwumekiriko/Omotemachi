@@ -3,7 +3,7 @@ using Asp.Versioning;
 using Omotemachi.Services.Wacky;
 using Omotemachi.DTOS.V1.Wacky;
 using Omotemachi.Exceptions.Wacky.CCG;
-using Omotemachi.Models.V1;
+using Omotemachi.Exceptions.Wacky;
 
 namespace Omotemachi.Controllers.Wacky;
 [ApiController]
@@ -84,7 +84,7 @@ public class CCGController(ICCGService ccgService) : ControllerBase
         {
             return BadRequest(new { ex.Code, ex.Name, ex.SeriesName, ex.Amount, ex.Needed });
         }
-        catch (GiveCommandTimeoutException ex)
+        catch (CommandTimeoutException ex)
         {
             return BadRequest(new { ex.Code, ex.TimeLeft });
         }

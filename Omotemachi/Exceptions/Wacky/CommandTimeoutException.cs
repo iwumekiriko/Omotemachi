@@ -1,8 +1,8 @@
 ﻿using NuGet.Packaging.Signing;
 
-namespace Omotemachi.Exceptions.Wacky.CCG;
+namespace Omotemachi.Exceptions.Wacky;
 
-public class GiveCommandTimeoutException(
+public class CommandTimeoutException(
     TimeSpan timeLeft
 ) : Exception, ICustomException
 {
