@@ -4,5 +4,6 @@ public enum InteractionsTypes
 {
     Cat = 1,
     Anime = 2,
-    Bunny = 3
+    Bunny = 3,
+    Pig = 4
 }
