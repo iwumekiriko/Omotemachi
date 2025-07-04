@@ -63,7 +63,10 @@ public class AppaService(
 
         var uAppa = await _context.UserAppas
             .Include(ua => ua.Appa)
-            .Where(ua => ua.GuildId == guildId && ua.UserId == userId)
+            .Where(ua => 
+                ua.GuildId == guildId &&
+                ua.UserId == userId &&
+                ua.AppaId == appa.Id)
             .FirstOrDefaultAsync();
 
         if (uAppa == null)
