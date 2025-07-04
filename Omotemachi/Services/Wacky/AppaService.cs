@@ -44,7 +44,7 @@ public class AppaService(
     public async Task<Appa?> GetRandomAppaAsync()
     {
         return await _context.Appas
-            .OrderBy(x => Guid.NewGuid())
+            .OrderBy(x => EF.Functions.Random())
             .FirstAsync();
     }
     public async Task<AppaDTO?> GetAndCountRandomUserAppaAsync(long guildId, long userId)
@@ -62,6 +62,7 @@ public class AppaService(
             return null;
 
         var uAppa = await _context.UserAppas
+            .Include(ua => ua.Appa)
             .Where(ua => ua.GuildId == guildId && ua.UserId == userId)
             .FirstOrDefaultAsync();
 
