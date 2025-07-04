@@ -11,11 +11,7 @@ public class TimeConverter
     }
     public static DateTimeOffset Today
     {
-        get 
-        {
-            DateTimeOffset utcNow = DateTimeOffset.UtcNow.Date;
-            return TimeZoneInfo.ConvertTime(utcNow, _timeZone);
-        }
+        get => GetCurrentTime().Date;
     }
     public static DateTimeOffset Tomorrow
     {
