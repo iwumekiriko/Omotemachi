@@ -118,7 +118,7 @@ public class CCGService(
              .Where(t => t.GuildId == guildId && t.UserId == userId)
              .FirstOrDefaultAsync();
 
-        var timeSpent = TimeConverter.GetCurrentTime() - (timeoutData?.LastGive ?? DateTimeOffset.MinValue);
+        var timeSpent = DateTimeOffset.UtcNow - (timeoutData?.LastGive ?? DateTimeOffset.MinValue);
         var timeout = TimeSpan.FromHours(int.Parse(_config["CCG:GiveCommandHoursTimeout"]!));
 
         if (timeoutData != null && timeSpent <= timeout)
@@ -141,7 +141,7 @@ public class CCGService(
         }
         else
         {
-            timeoutData.LastGive = TimeConverter.GetCurrentTime();
+            timeoutData.LastGive = DateTimeOffset.UtcNow;
         }
         await _context.SaveChangesAsync();
     }
