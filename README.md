@@ -6,6 +6,7 @@
 
 **Стек технологий:**
 - ASP.NET Core 8.0 (C#)
+- PostgreSQL
 - Docker (multi-stage build)
 - GitHub Actions (CI/CD)
 - Telegram Bot API (уведомления)
