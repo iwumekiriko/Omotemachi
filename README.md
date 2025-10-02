@@ -13,7 +13,7 @@
 
 ## CI/CD
 Для автоматизации сборки используется **GitHub Actions**.  
-[Pipeline](github/workflows/ci-cd.yml) выполняет следующие шаги:
+[Pipeline](.github/workflows/ci-cd.yml) выполняет следующие шаги:
 
 1. Проверка кода из репозитория.  
 2. Авторизация в Docker Hub.  
