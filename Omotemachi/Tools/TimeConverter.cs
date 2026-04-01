@@ -11,7 +11,15 @@ public class TimeConverter
     }
     public static DateTimeOffset Today
     {
-        get => GetCurrentTime().Date;
+        get
+        {
+            var now = GetCurrentTime();
+            return new DateTimeOffset(
+                now.Year, now.Month, now.Day,
+                0, 0, 0,
+                now.Offset
+            );
+        }
     }
     public static DateTimeOffset Tomorrow
     {

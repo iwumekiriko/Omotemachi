@@ -53,9 +53,9 @@ public class AppaService(
              .Where(t => t.GuildId == guildId && t.UserId == userId)
              .FirstOrDefaultAsync();
 
-        if (timeoutData != null && timeoutData.LastCatch >= DateTime.Today)
+        if (timeoutData != null && timeoutData.LastCatch >= TimeConverter.Today)
             throw new CommandTimeoutException(
-                timeLeft: DateTime.Today.AddDays(1) - DateTime.UtcNow);
+                timeLeft: TimeConverter.Tomorrow - TimeConverter.GetCurrentTime());
 
         var appa = await GetRandomAppaAsync();
         if (appa == null)
@@ -92,7 +92,7 @@ public class AppaService(
         }
         else
         {
-            timeoutData.LastCatch = DateTime.UtcNow;
+            timeoutData.LastCatch = TimeConverter.GetCurrentTime();
         }
 
         await _context.SaveChangesAsync();
