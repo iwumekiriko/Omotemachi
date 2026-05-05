@@ -14,8 +14,9 @@ using Omotemachi.Models.V1.Domain.Jester.Shop;
 using Omotemachi.Models.V1.Domain.Statistics;
 using Omotemachi.Models.V1.Domain.Wacky.Appa;
 using Omotemachi.Models.V1.Domain.Wacky.CCG;
+using Omotemachi.Models.V1.Domain.Logs;
 
-namespace Omotemachi.Infrastructure.Persistance.AppDbContext;
+namespace Omotemachi.Infrastructure.Persistance.AppContext;
 
 public class AppDbContext: DbContext
 {
@@ -105,6 +106,9 @@ public class AppDbContext: DbContext
     public virtual DbSet<MessagesStatistics> MessagesStatistics { get; set; }
     public virtual DbSet<VoiceStatistics> VoiceStatistics { get; set; }
     public virtual DbSet<CardsStatistics> CardStatistics { get; set; }
+
+    // Logs
+    public virtual DbSet<LogEntry> Logs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using Omotemachi.Models.V1.Domain.Wacky.CCG;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Wacky;
 

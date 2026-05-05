@@ -1,4 +1,4 @@
-﻿using Omotemachi.Infrastructure.Persistance.AppDbContext;
+﻿using Omotemachi.Infrastructure.Persistance.AppContext;
 using Omotemachi.Models.V1.Domain.Statistics;
 using Omotemachi.Models.V1.DTOs.Wacky;
 

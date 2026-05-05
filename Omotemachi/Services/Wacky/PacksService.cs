@@ -3,7 +3,7 @@ using Omotemachi.Models.V1.Domain.Wacky.CCG;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Concurrent;
 using Omotemachi.Models.V1.DTOs.Wacky;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Wacky;
 

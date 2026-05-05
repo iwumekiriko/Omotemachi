@@ -7,7 +7,7 @@ using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
 using Omotemachi.Models.V1.Domain.Jester.Quests;
 using Omotemachi.Models.V1.Domain.Jester.Settings;
 using Omotemachi.Models.V1.Domain.Statistics;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Jester;
 

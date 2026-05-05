@@ -1,4 +1,4 @@
-﻿using Omotemachi.Infrastructure.Persistance.AppDbContext;
+﻿using Omotemachi.Infrastructure.Persistance.AppContext;
 using Omotemachi.Models.V1.Domain;
 using Omotemachi.Models.V1.Domain.Jester;
 

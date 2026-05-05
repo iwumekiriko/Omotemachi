@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Omotemachi.Models.V1.Domain.Jester.Interactions;
 using Omotemachi.Models.V1.Domain.Jester.Settings;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Jester;
 

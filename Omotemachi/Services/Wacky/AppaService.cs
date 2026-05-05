@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Omotemachi.Exceptions.Wacky;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 using Omotemachi.Models.V1.Domain.Wacky.Appa;
 using Omotemachi.Models.V1.DTOs.Wacky;
 using Omotemachi.Tools;

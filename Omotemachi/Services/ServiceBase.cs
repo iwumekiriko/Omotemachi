@@ -1,4 +1,4 @@
-﻿using Omotemachi.Infrastructure.Persistance.AppDbContext;
+﻿using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services;
 

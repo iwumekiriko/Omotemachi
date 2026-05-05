@@ -9,7 +9,7 @@ using Omotemachi.Models.V1.Domain.Jester.Settings;
 using Omotemachi.Models.V1.Domain.Jester.Top;
 using Omotemachi.Models.V1.Domain.Statistics;
 using Omotemachi.Models.V1.DTOs.Jester;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services;
 

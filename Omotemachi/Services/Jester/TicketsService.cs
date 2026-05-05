@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using Omotemachi.Models.V1.Domain.Jester;
 using Omotemachi.Models.V1.Domain.Statistics;
-using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Jester;
 
