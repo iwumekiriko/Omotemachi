@@ -1,7 +1,8 @@
 ﻿using Omotemachi.Exceptions.Jester.Interactions;
-using Omotemachi.Models.V1.Jester.Interactions;
-using Omotemachi.Models.V1.Jester.Settings;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Models.V1.Domain.Jester.Interactions;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -13,7 +14,7 @@ public interface IInteractionsService
 }
 
 public class InteractionsService(
-    AppContext context,
+    AppDbContext context,
     ILogger<InteractionsService> logger,
     IUserSettingsService uSettingsService
 ) : ServiceBase(context, logger), IInteractionsService

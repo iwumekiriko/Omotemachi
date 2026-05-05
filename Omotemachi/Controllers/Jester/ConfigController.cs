@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
-using Omotemachi.Models.V1.Jester.Config;
 using Omotemachi.Services.Jester;
+using Omotemachi.Models.V1.Domain.Jester.Config;
 
 namespace Omotemachi.Controllers.Jester;
 [ApiController]

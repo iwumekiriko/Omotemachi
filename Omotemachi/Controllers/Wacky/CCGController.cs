@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
 using Omotemachi.Services.Wacky;
-using Omotemachi.DTOS.V1.Wacky;
 using Omotemachi.Exceptions.Wacky.CCG;
 using Omotemachi.Exceptions.Wacky;
+using Omotemachi.Models.V1.DTOs.Wacky;
 
 namespace Omotemachi.Controllers.Wacky;
 [ApiController]

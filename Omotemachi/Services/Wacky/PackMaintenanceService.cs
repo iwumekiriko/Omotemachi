@@ -1,6 +1,7 @@
-﻿using Omotemachi.Models.V1.Wacky.CCG;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
+using Omotemachi.Models.V1.Domain.Wacky.CCG;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Wacky;
 
@@ -15,7 +16,7 @@ public class PackMaintenanceService(IServiceProvider services) : BackgroundServi
         {
             using (var scope = _services.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<AppContext>();
+                var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 await CreateNewPacks(context);
                 await UpdateGeneralPack(context);
 
@@ -25,7 +26,7 @@ public class PackMaintenanceService(IServiceProvider services) : BackgroundServi
             await Task.Delay(_checkInterval, stoppingToken);
         }
     }
-    private static async Task CreateNewPacks(AppContext context)
+    private static async Task CreateNewPacks(AppDbContext context)
     {
         var seriesToProcess = await context.Cards
             .Include(c => c.Series)
@@ -62,7 +63,7 @@ public class PackMaintenanceService(IServiceProvider services) : BackgroundServi
             }
         }
     }
-    private static async Task UpdateGeneralPack(AppContext context)
+    private static async Task UpdateGeneralPack(AppDbContext context)
     {
         var generalPack = await context.Packs
             .FirstOrDefaultAsync(p => !p.IsSeriesSpecific);

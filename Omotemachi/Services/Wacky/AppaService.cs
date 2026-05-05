@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Omotemachi.DTOS.V1.Wacky;
 using Omotemachi.Exceptions.Wacky;
-using Omotemachi.Models.V1.Wacky.Appa;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Models.V1.Domain.Wacky.Appa;
+using Omotemachi.Models.V1.DTOs.Wacky;
 using Omotemachi.Tools;
 
 namespace Omotemachi.Services.Wacky;
@@ -17,7 +18,7 @@ public interface IAppaService
 }
 
 public class AppaService(
-    AppContext context,
+    AppDbContext context,
     ILogger<AppaService> logger,
     IConfiguration config
 ) : ServiceBase(context, logger), IAppaService

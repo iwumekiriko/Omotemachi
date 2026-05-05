@@ -3,8 +3,8 @@ using Omotemachi.Extensions;
 using Omotemachi.Services;
 using Omotemachi.Services.Jester;
 using Omotemachi.Services.Wacky;
-using Omotemachi.Tools;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi;
 
@@ -17,7 +17,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Configuration.AddEnvironmentVariables(prefix: "api_");
-        builder.Services.AddDbContext<AppContext>(options =>
+        builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration["DatabaseConnection"]
             ?? throw new InvalidOperationException("DB Connection string not found")));
         builder.Services.AddSingleton<Dictionary<string, int>>();
@@ -38,7 +38,6 @@ public class Program
         builder.Services.AddScoped<IAppaService, AppaService>();
         builder.Services.AddScoped<IPacksService, PacksService>();
         builder.Services.AddHostedService<PackMaintenanceService>();
-        builder.Services.AddSingleton<IImageRenderer, ImageRenderer>();
         builder.Services.AddHttpClient();
         builder.Services.AddConfigServices();
         builder.Services.AddApiVersioning(options =>

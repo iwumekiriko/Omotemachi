@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
-using Omotemachi.Models.V1.Jester;
 using Omotemachi.Services.Jester;
 using Microsoft.AspNetCore.Mvc;
+using Omotemachi.Models.V1.Domain.Jester;
 
 namespace Omotemachi.Controllers.Jester;
 

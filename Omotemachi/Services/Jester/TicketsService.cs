@@ -1,7 +1,8 @@
-﻿using Omotemachi.Models.V1.Jester;
-using Omotemachi.Models.V1.Statistics;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Omotemachi.Models.V1.Domain.Jester;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -13,7 +14,7 @@ public interface ITicketsService
     Task CloseTicket(Ticket updatedTicket);
 }
 public class TicketsService(
-    AppContext context,
+    AppDbContext context,
     ILogger<TicketsService> logger,
     IStatisticsService statistics
 ) : ServiceBase(context, logger), ITicketsService

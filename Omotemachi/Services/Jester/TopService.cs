@@ -1,7 +1,8 @@
-﻿using Omotemachi.DTOS.V1.Jester;
-using Omotemachi.Models.V1.Statistics;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Models.V1.DTOs.Jester;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -17,7 +18,7 @@ public interface ITopService
     Task<TopDTO> GetDuetsTopAsync(long guildId, long userId);
 }
 public class TopService(
-    AppContext context,
+    AppDbContext context,
     ILogger<TopService> logger
 ) : ServiceBase(context, logger), ITopService
 {

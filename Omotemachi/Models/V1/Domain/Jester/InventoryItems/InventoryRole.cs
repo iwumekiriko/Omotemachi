@@ -1,0 +1,19 @@
+﻿using Omotemachi.Models.V1.Domain.Jester;
+using Omotemachi.Models.V1.Domain.Jester.Items;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Omotemachi.Models.V1.Domain.Jester.InventoryItems;
+
+public class InventoryRole : IInventoryItem
+{
+    [Key]
+    public int Id { get; set; }
+    public int InventoryId { get; set; }
+    [ForeignKey("InventoryId")]
+    public Inventory Inventory { get; set; }
+
+    public int RoleId { get; set; }
+    [ForeignKey("RoleId")]
+    public Role Role { get; set; }
+}

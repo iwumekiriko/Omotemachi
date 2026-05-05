@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
-using Omotemachi.Models.V1.Jester.Lootboxes;
 using Omotemachi.Services.Jester;
 using Omotemachi.Exceptions.Jester.Lootboxes;
+using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
 
 namespace Omotemachi.Controllers.Jester;
 [ApiController]

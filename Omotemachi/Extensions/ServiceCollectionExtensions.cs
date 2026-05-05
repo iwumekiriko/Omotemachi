@@ -1,4 +1,4 @@
-﻿using Omotemachi.Models.V1.Jester.Config;
+﻿using Omotemachi.Models.V1.Domain.Jester.Config;
 using Omotemachi.Services.Jester;
 using System.Reflection;
 

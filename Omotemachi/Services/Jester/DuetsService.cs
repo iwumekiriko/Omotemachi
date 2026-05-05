@@ -1,9 +1,11 @@
 ﻿using Omotemachi.Exceptions.Jester.Duets;
 using Omotemachi.Models.V1;
-using Omotemachi.Models.V1.Jester;
-using Omotemachi.Models.V1.Jester.Settings;
-using Omotemachi.Models.V1.Statistics;
+using Omotemachi.Models.V1.Domain;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Models.V1.Domain.Jester;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -15,7 +17,7 @@ public interface IDuetsService
 }
 
 public class DuetsService(
-    AppContext context,
+    AppDbContext context,
     ILogger<DuetsService> logger,
     IStatisticsService statistics,
     IUserSettingsService uSettingsService

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Asp.Versioning;
-using Omotemachi.Models.V1.Jester.Quests;
 using Omotemachi.Services.Jester;
-using Omotemachi.DTOS.V1.Jester.Quests;
 using Omotemachi.Exceptions.Jester.Quests;
+using Omotemachi.Models.V1.Domain.Jester.Quests;
+using Omotemachi.Models.V1.DTOs.Jester.Quests;
 
 namespace Omotemachi.Controllers.Jester;
 [ApiController]

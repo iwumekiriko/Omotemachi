@@ -1,8 +1,9 @@
 ﻿using Omotemachi.Exceptions.Jester.Lootboxes;
-using Omotemachi.Models.V1.Jester.Lootboxes;
-using Omotemachi.Models.V1.Statistics;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -17,7 +18,7 @@ public interface ILootboxesService
 }
 
 public class LootboxesService(
-    AppContext context,
+    AppDbContext context,
     ILogger<LootboxesService> logger,
     IStatisticsService statistics
 ) : ServiceBase(context, logger), ILootboxesService

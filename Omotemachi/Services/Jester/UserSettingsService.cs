@@ -1,7 +1,8 @@
-﻿using Omotemachi.DTOS.V1.Jester;
-using Omotemachi.Exceptions.Jester.Settings;
-using Omotemachi.Models.V1.Jester.Settings;
+﻿using Omotemachi.Exceptions.Jester.Settings;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Models.V1.DTOs.Jester;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -16,7 +17,7 @@ public interface IUserSettingsService
 }
 
 public class UserSettingsService(
-    AppContext context,
+    AppDbContext context,
     ILogger<UserSettingsService> logger
 ) : ServiceBase(context, logger), IUserSettingsService
 {

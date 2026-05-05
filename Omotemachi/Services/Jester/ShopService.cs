@@ -1,8 +1,9 @@
-﻿using Omotemachi.DTOS.V1.Jester;
-using Omotemachi.Exceptions.Shop;
-using Omotemachi.Models.V1.Jester.Shop;
+﻿using Omotemachi.Exceptions.Shop;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using Omotemachi.Models.V1.Domain.Jester.Shop;
+using Omotemachi.Models.V1.DTOs.Jester;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -21,7 +22,7 @@ public interface IShopService
 }
 
 public class ShopService(
-    AppContext context,
+    AppDbContext context,
     ILogger<ShopService> logger,
     IStatisticsService statistics
 ) : ServiceBase(context, logger), IShopService

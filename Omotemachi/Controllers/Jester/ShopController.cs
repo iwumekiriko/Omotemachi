@@ -1,10 +1,10 @@
 ﻿using Asp.Versioning;
 using Omotemachi.Exceptions.Jester.Inventory;
 using Omotemachi.Exceptions.Shop;
-using Omotemachi.Models.V1.Jester.Lootboxes;
-using Omotemachi.Models.V1.Jester.Shop;
+using Omotemachi.Models.V1.Domain.Jester.Shop;
 using Omotemachi.Services.Jester;
 using Microsoft.AspNetCore.Mvc;
+using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
 
 namespace Omotemachi.Controllers.Jester;
 

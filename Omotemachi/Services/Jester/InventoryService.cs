@@ -1,12 +1,14 @@
 ﻿using Omotemachi.Exceptions.Jester.Inventory;
 using Omotemachi.Models.V1;
-using Omotemachi.Models.V1.Jester;
-using Omotemachi.Models.V1.Jester.InventoryItems;
-using Omotemachi.Models.V1.Jester.Items;
-using Omotemachi.Models.V1.Jester.Lootboxes;
-using Omotemachi.Models.V1.Jester.Settings;
-using Omotemachi.Models.V1.Statistics;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Models.V1.Domain.Jester;
+using Omotemachi.Models.V1.Domain.Jester.InventoryItems;
+using Omotemachi.Models.V1.Domain.Jester.Items;
+using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Models.V1.Domain;
+using Omotemachi.Infrastructure.Persistance.AppDbContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -24,7 +26,7 @@ public interface IInventoryService
 }
 
 public class InventoryService(
-    AppContext context,
+    AppDbContext context,
     ILogger<InventoryService> logger,
     IStatisticsService statistics,
     IUserSettingsService uSettingService

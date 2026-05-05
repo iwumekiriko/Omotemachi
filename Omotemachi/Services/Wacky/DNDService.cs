@@ -1,5 +1,6 @@
-﻿using Omotemachi.DTOS.V1;
-using Omotemachi.Models.V1.Statistics;
+﻿using Omotemachi.Infrastructure.Persistance.AppDbContext;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Models.V1.DTOs.Wacky;
 
 namespace Omotemachi.Services.Wacky;
 
@@ -9,7 +10,7 @@ public interface IDNDService
 }
 
 public class DNDService(
-    AppContext context,
+    AppDbContext context,
     ILogger<DNDService> logger,
     IStatisticsService statistics
 ) : ServiceBase(context, logger), IDNDService

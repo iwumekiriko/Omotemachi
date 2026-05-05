@@ -1,4 +1,4 @@
-﻿using Omotemachi.Models.V1.Jester.Lootboxes;
+﻿using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
 
 namespace Omotemachi.Exceptions.Shop;
 

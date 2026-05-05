@@ -1,8 +1,8 @@
 ﻿using Asp.Versioning;
 using Omotemachi.Exceptions.Jester.Interactions;
-using Omotemachi.Models.V1.Jester.Interactions;
 using Omotemachi.Services.Jester;
 using Microsoft.AspNetCore.Mvc;
+using Omotemachi.Models.V1.Domain.Jester.Interactions;
 
 namespace Omotemachi.Controllers.Jester;
 

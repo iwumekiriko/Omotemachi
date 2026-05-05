@@ -1,7 +1,7 @@
 ﻿using Asp.Versioning;
-using Omotemachi.DTOS.V1;
 using Omotemachi.Services.Wacky;
 using Microsoft.AspNetCore.Mvc;
+using Omotemachi.Models.V1.DTOs.Wacky;
 
 namespace Omotemachi.Controllers.Wacky;
 

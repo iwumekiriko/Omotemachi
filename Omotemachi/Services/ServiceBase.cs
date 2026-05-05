@@ -1,10 +1,12 @@
-﻿namespace Omotemachi.Services;
+﻿using Omotemachi.Infrastructure.Persistance.AppDbContext;
+
+namespace Omotemachi.Services;
 
 public class ServiceBase(
-    AppContext context,
+    AppDbContext context,
     ILogger<ServiceBase> logger
 )
 {
-    public readonly AppContext _context = context;
+    public readonly AppDbContext _context = context;
     public readonly ILogger<ServiceBase> _logger = logger;
 }
