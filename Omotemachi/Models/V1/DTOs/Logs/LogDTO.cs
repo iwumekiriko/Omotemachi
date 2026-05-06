@@ -7,10 +7,8 @@ namespace Omotemachi.Models.V1.DTOs.Logs;
 
 public class LogDTO
 {
+    public long GuildId { get; set; } = 0;
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public LogSource Source { get; set; }
-    public long GuildId { get; set; }
-
     public LogLevel Level { get; set; }
     public string Message { get; set; }
 
