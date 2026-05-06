@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using Omotemachi.Models.V1.Domain.Wacky.CCG;
 using Omotemachi.Infrastructure.Persistance.AppContext;
 
-namespace Omotemachi.Services.Wacky;
+namespace Omotemachi.Infrastructure.Background.Packs;
 
-public class PackMaintenanceService(IServiceProvider services) : BackgroundService
+public class PackMaintenanceWorker(IServiceProvider services) : BackgroundService
 {
     private readonly IServiceProvider _services = services;
     private readonly TimeSpan _checkInterval = TimeSpan.FromHours(1);
