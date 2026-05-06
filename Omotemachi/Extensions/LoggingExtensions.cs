@@ -12,6 +12,11 @@ public static class LoggingExtensions
         builder.Logging.ClearProviders();
         builder.Logging.AddConsole();
 
+        builder.Logging.AddFilter("Microsoft", LogLevel.Warning);
+        builder.Logging.AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
+        builder.Logging.AddFilter<LoggerProvider>(level =>
+            level >= LogLevel.Information);
+
         services.AddSingleton<LoggerProvider>();
 
         builder.Logging.Services.AddSingleton<ILoggerProvider>(sp =>
