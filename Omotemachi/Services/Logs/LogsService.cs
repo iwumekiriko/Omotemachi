@@ -24,7 +24,7 @@ public class LogsService(
         {
             Id = Guid.NewGuid(),
 
-            Source = dto.Source,
+            Source = LogSource.External,
             GuildId = dto.GuildId,
 
             Level = dto.Level,
