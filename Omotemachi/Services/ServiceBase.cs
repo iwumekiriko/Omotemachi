@@ -13,6 +13,7 @@ public class ServiceBase<T>
         _context = context;
         _logger = logger;
 
-        _logger.LogDebug("[{timestamp}] {serviceName} initialized", TimeConverter.GetCurrentTime(), typeof(T).Name);
+        _logger.LogDebug("[{timestamp}] {serviceName} initialized",
+            TimeConverter.GetCurrentTime(), typeof(T).Name);
     }
 }
