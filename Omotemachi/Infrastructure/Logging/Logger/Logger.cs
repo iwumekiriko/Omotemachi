@@ -35,7 +35,7 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
             Id = Guid.NewGuid(),
             Message = message,
             Level = MapLevel(logLevel),
-            Source = LogSource.API,
+            Source = GetSource(_categoryName),
             Category = _categoryName,
             GuildId = 0
         };
@@ -55,5 +55,16 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
             MsLogLevel.Critical => AppLogLevel.Error,
             _ => AppLogLevel.Info
         };
+    }
+
+    public static LogSource GetSource(string category)
+    {
+        if (category.StartsWith("Microsoft") ||
+            category.StartsWith("System"))
+        {
+            return LogSource.Framework;
+        }
+
+        return LogSource.Application;
     }
 }
