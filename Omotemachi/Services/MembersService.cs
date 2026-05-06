@@ -43,7 +43,7 @@ public class MembersService(
     IUserSettingsService userSettings,
     IDuetsService duetsService,
     IInventoryService inventoryService
-) : ServiceBase(context, logger), IMembersService
+) : ServiceBase<MembersService>(context, logger), IMembersService
 {
     private readonly IConfigService<ExperienceConfig> _expConfigService = expConfigService;
     private readonly Dictionary<string, int> _voiceSessions = voiceSessions;

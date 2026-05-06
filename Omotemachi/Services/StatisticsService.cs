@@ -19,7 +19,7 @@ public interface IStatisticsService
 public class StatisticsService(
     AppDbContext context,
     ILogger<StatisticsService> logger
-) : ServiceBase(context, logger), IStatisticsService
+) : ServiceBase<StatisticsService>(context, logger), IStatisticsService
 {
     public async Task<T> GetStatistics<T>(long guildId, long userId) where T : BaseStatistics, new()
     {

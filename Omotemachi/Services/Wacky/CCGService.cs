@@ -36,7 +36,7 @@ public class CCGService(
     IConfiguration config,
     IPacksService packService,
     IStatisticsService statistics
-) : ServiceBase(context, logger), ICCGService
+) : ServiceBase<CCGService>(context, logger), ICCGService
 {
     private readonly IConfiguration _config = config;
     private readonly IPacksService _packService = packService;

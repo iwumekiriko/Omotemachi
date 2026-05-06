@@ -17,7 +17,7 @@ public class InteractionsService(
     AppDbContext context,
     ILogger<InteractionsService> logger,
     IUserSettingsService uSettingsService
-) : ServiceBase(context, logger), IInteractionsService
+) : ServiceBase<InteractionsService>(context, logger), IInteractionsService
 {
     private readonly IUserSettingsService _uSettingsService = uSettingsService;
     private readonly Random _random = new();

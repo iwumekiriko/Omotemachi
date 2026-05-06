@@ -18,7 +18,7 @@ public interface IPacksService
 public class PacksService(
     AppDbContext context,
     ILogger<PacksService> logger
-) : ServiceBase(context, logger), IPacksService
+) : ServiceBase<PacksService>(context, logger), IPacksService
 {
     private readonly Random _random = new();
     private static readonly ConcurrentDictionary<int, Pack> _packsCache = new();

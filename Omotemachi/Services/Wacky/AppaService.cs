@@ -21,7 +21,7 @@ public class AppaService(
     AppDbContext context,
     ILogger<AppaService> logger,
     IConfiguration config
-) : ServiceBase(context, logger), IAppaService
+) : ServiceBase<AppaService>(context, logger), IAppaService
 {
     private readonly IConfiguration _config = config;
 

@@ -13,7 +13,7 @@ public class DNDService(
     AppDbContext context,
     ILogger<DNDService> logger,
     IStatisticsService statistics
-) : ServiceBase(context, logger), IDNDService
+) : ServiceBase<DNDService>(context, logger), IDNDService
 {
     private readonly IStatisticsService _statistics = statistics;
 

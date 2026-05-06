@@ -25,7 +25,7 @@ public class ShopService(
     AppDbContext context,
     ILogger<ShopService> logger,
     IStatisticsService statistics
-) : ServiceBase(context, logger), IShopService
+) : ServiceBase<ShopService>(context, logger), IShopService
 {
     private readonly IStatisticsService _statistics = statistics;
 

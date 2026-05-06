@@ -33,7 +33,7 @@ public class QuestsService(
     IStatisticsService statistics,
     IUserSettingsService uSettingsService,
     IPacksService packsService
-) : ServiceBase(context, logger), IQuestsService
+) : ServiceBase<QuestsService>(context, logger), IQuestsService
 {
     private readonly IConfiguration _config = config;
     private readonly IMembersService _membersService = membersService;

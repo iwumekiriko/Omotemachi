@@ -13,7 +13,7 @@ public interface IConfigService<T> where T : class, IConfig
 public class ConfigService<T>(
     AppDbContext context,
     ILogger<ConfigService<T>> logger
-) : ServiceBase(context, logger), IConfigService<T> where T : class, IConfig
+) : ServiceBase<ConfigService<T>>(context, logger), IConfigService<T> where T : class, IConfig
 {
     public async Task<T> GetOrCreateConfigAsync(long guildId)
     {

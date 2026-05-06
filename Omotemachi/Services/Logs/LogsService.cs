@@ -14,7 +14,7 @@ public class LogsService(
     AppDbContext context,
     ILogger<LogsService> logger,
     ILogQueue queue
-) : ServiceBase(context, logger), ILogsService
+) : ServiceBase<LogsService>(context, logger), ILogsService
 {
     private readonly ILogQueue _queue = queue;
 

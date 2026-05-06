@@ -19,7 +19,7 @@ public interface IUserSettingsService
 public class UserSettingsService(
     AppDbContext context,
     ILogger<UserSettingsService> logger
-) : ServiceBase(context, logger), IUserSettingsService
+) : ServiceBase<UserSettingsService>(context, logger), IUserSettingsService
 {
     public async Task<int?> GetGuildSettingId(long guildId, SettingTypes type)
     {

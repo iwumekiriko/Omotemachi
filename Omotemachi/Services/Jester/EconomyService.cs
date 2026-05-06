@@ -14,7 +14,7 @@ public class EconomyService(
     AppDbContext context,
     ILogger<EconomyService> logger,
     IMembersService memberService
-) : ServiceBase(context, logger), IEconomyService
+) : ServiceBase<EconomyService>(context, logger), IEconomyService
 {
     private readonly IMembersService _memberService = memberService;
 

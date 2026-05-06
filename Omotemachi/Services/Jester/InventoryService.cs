@@ -30,7 +30,7 @@ public class InventoryService(
     ILogger<InventoryService> logger,
     IStatisticsService statistics,
     IUserSettingsService uSettingService
-) : ServiceBase(context, logger), IInventoryService
+) : ServiceBase<InventoryService>(context, logger), IInventoryService
 {
     private readonly IStatisticsService _statistics = statistics;
     private readonly IUserSettingsService _uSettingService = uSettingService;

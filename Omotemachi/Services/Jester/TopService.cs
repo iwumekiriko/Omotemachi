@@ -20,7 +20,7 @@ public interface ITopService
 public class TopService(
     AppDbContext context,
     ILogger<TopService> logger
-) : ServiceBase(context, logger), ITopService
+) : ServiceBase<TopService>(context, logger), ITopService
 {
     private const int TOP_AMOUNT = 10;
     

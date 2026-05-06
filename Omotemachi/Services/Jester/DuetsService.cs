@@ -21,7 +21,7 @@ public class DuetsService(
     ILogger<DuetsService> logger,
     IStatisticsService statistics,
     IUserSettingsService uSettingsService
-) : ServiceBase(context, logger), IDuetsService
+) : ServiceBase<DuetsService>(context, logger), IDuetsService
 {
     private readonly IStatisticsService _statistics = statistics;
     private readonly IUserSettingsService _uSettingsService = uSettingsService;

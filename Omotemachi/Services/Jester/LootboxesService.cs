@@ -21,7 +21,7 @@ public class LootboxesService(
     AppDbContext context,
     ILogger<LootboxesService> logger,
     IStatisticsService statistics
-) : ServiceBase(context, logger), ILootboxesService
+) : ServiceBase<LootboxesService>(context, logger), ILootboxesService
 {
     private readonly IStatisticsService _statistics = statistics;
 

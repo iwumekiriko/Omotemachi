@@ -17,7 +17,7 @@ public class TicketsService(
     AppDbContext context,
     ILogger<TicketsService> logger,
     IStatisticsService statistics
-) : ServiceBase(context, logger), ITicketsService
+) : ServiceBase<TicketsService>(context, logger), ITicketsService
 {
     private readonly IStatisticsService _statistics = statistics;
 
