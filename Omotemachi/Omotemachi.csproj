@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Data\**" />
+    <Compile Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
     <Content Remove="Data\**" />
+    <Content Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
     <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
     <None Remove="Data\**" />
+    <None Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,18 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Fonts\Alegreya.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Controllers\Site\" />
-    <Folder Include="Infrastructure\Logging\Queue\" />
-    <Folder Include="Infrastructure\Logging\Worker\" />
-    <Folder Include="Infrastructure\Logging\Logger\" />
     <Folder Include="Infrastructure\Persistance\Migrations\" />
     <Folder Include="Infrastructure\External\" />
+    <Folder Include="Infrastructure\Persistance\Repositories\" />
     <Folder Include="Models\V1\DTOs\Site\" />
     <Folder Include="Exceptions\Site\" />
     <Folder Include="Models\V1\Domain\Site\" />
