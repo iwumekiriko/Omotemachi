@@ -17,4 +17,18 @@ public class LogsConfig(long guildId) : IConfig
     public string? MembersWebhookUrl { get; set; }
     public string? VoiceWebhookUrl { get; set; }
     public string? ElseWebhookUrl { get; set; }
+
+    public string? GetWebhookUrl(string category)
+    {
+        return category.ToLower() switch
+        {
+            "command" => CommandInteractionsWebhookUrl,
+            "message" => MessagesWebhookUrl,
+            "ticket" => TicketsWebhookUrl,
+            "guild" => GuildWebhookUrl,
+            "member" => MembersWebhookUrl,
+            "voice" => VoiceWebhookUrl,
+            _ => ElseWebhookUrl
+        };
+    }
 }
