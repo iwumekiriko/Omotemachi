@@ -1,23 +1,22 @@
 ﻿using Asp.Versioning;
-using Omotemachi.Models.V1.Logs;
-using Omotemachi.Models.V1.Logs.Types;
+using Omotemachi.Models.V1.Domain.Logs;
 using Microsoft.AspNetCore.Mvc;
+using Omotemachi.Services.Logs;
+using Omotemachi.Models.V1.DTOs.Logs;
 
 namespace Omotemachi.Controllers.Logs;
 
 [ApiController]
 [ApiVersion(1)]
 [Route("/api/v{version:apiVersion}/[controller]")]
-public class LogsController : ControllerBase
+public class LogsController(ILogsService logsService) : ControllerBase
 {
-    [HttpPost("jester/{type:int}/{guildId:long?}/{userId:long?}")]
-    public async Task<IActionResult> WriteJesterLog(
-        JesterLogType type,
-        long? guildId,
-        long? userId,
-        [FromBody] LogBase log
-    )
+    private readonly ILogsService _logsService = logsService;
+
+    [HttpPost("logs")]
+    public async Task<IActionResult> CreateLog(LogDTO dto)
     {
-        return Ok(new { Success = true, Status = StatusCodes.Status200OK });
+        await _logsService.HandleAsync(dto);
+        return Ok();
     }
 }
