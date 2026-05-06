@@ -18,12 +18,14 @@ using Omotemachi.Models.V1.Domain.Logs;
 
 namespace Omotemachi.Infrastructure.Persistance.AppContext;
 
-public class AppDbContext: DbContext
+public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
+        
     }
+
     public virtual DbSet<Guild> Guilds { get; set; }
     public virtual DbSet<User> Users { get; set; }
 
