@@ -4,7 +4,7 @@ namespace Omotemachi.Extensions;
 
 public static class LoggingExtensions
 {
-    public static IServiceCollection AddLogging(
+    public static IServiceCollection AddCustomLogging(
         this IServiceCollection services,
         WebApplicationBuilder builder
     )

@@ -35,7 +35,7 @@ public class Program
         builder.Services.AddHttpClient();
         builder.Services.AddConfigServices();
 
-        builder.Services.AddLogging();
+        builder.Services.AddCustomLogging(builder);
 
         builder.Services.AddApiVersioning(options =>
         {
