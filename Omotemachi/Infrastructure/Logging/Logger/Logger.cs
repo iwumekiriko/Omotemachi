@@ -11,9 +11,11 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
     private readonly ILogQueue _queue = queue;
     private readonly string _categoryName = categoryName;
 
-    public IDisposable? BeginScope<TState>(TState state) => null;
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull 
+        => null;
 
-    public bool IsEnabled(MsLogLevel logLevel) => true;
+    public bool IsEnabled(MsLogLevel logLevel)
+        => logLevel != MsLogLevel.None;
 
     public void Log<TState>(
         MsLogLevel logLevel,
@@ -23,6 +25,9 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
         Func<TState, Exception?, string> formatter
     )
     {
+        if (!IsEnabled(logLevel))
+            return;
+
         var message = formatter(state, exception);
 
         var log = new LogEntry 
