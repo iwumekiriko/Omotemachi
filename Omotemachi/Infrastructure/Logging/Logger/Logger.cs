@@ -49,11 +49,11 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
         {
             MsLogLevel.Trace => AppLogLevel.Debug,
             MsLogLevel.Debug => AppLogLevel.Debug,
-            MsLogLevel.Information => AppLogLevel.Info,
+            MsLogLevel.Information => AppLogLevel.Information,
             MsLogLevel.Warning => AppLogLevel.Warning,
             MsLogLevel.Error => AppLogLevel.Error,
             MsLogLevel.Critical => AppLogLevel.Error,
-            _ => AppLogLevel.Info
+            _ => AppLogLevel.Information
         };
     }
 
