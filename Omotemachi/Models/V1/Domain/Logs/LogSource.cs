@@ -2,7 +2,7 @@
 
 public enum LogSource
 {
-    Jester,
-    Wacky,
-    API
+    Framework,
+    Application,
+    External
 }
