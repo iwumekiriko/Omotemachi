@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Omotemachi.Models.V1;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
+using Omotemachi.Models.V1;
 using Omotemachi.Models.V1.Domain;
 using Omotemachi.Models.V1.Domain.Jester;
 using Omotemachi.Models.V1.Domain.Jester.Config;
@@ -11,10 +13,10 @@ using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
 using Omotemachi.Models.V1.Domain.Jester.Quests;
 using Omotemachi.Models.V1.Domain.Jester.Settings;
 using Omotemachi.Models.V1.Domain.Jester.Shop;
+using Omotemachi.Models.V1.Domain.Logs;
 using Omotemachi.Models.V1.Domain.Statistics;
 using Omotemachi.Models.V1.Domain.Wacky.Appa;
 using Omotemachi.Models.V1.Domain.Wacky.CCG;
-using Omotemachi.Models.V1.Domain.Logs;
 
 namespace Omotemachi.Infrastructure.Persistance.AppContext;
 
@@ -152,6 +154,22 @@ public class AppDbContext : DbContext
             .Property(b => b.Data)
             .HasConversion(
                 v => JsonConvert.SerializeObject(v),
-                v => JsonConvert.DeserializeObject<Dictionary<string, int>>(v)!);
+                v => JsonConvert.DeserializeObject<Dictionary<string, int>>(v)!)
+            .Metadata.SetValueComparer(
+                new ValueComparer<Dictionary<string, int>>(
+                    (d1, d2) =>
+                        d1!.Count == d2!.Count &&
+                        d1.All(kv =>
+                            d2!.ContainsKey(kv.Key) &&
+                            d2[kv.Key] == kv.Value),
+
+                    d => d.Aggregate(
+                        0,
+                        (a, v) => HashCode.Combine(a, v.Key.GetHashCode(), v.Value)),
+
+                    d => d.ToDictionary(
+                        entry => entry.Key,
+                        entry => entry.Value)
+                ));
     }
 }
