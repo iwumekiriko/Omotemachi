@@ -1,4 +1,4 @@
-﻿using Omotemachi.Infrastructure.Dispatchers.Webhooks;
+﻿using Omotemachi.Infrastructure.Logging.Dispatcher;
 using Omotemachi.Infrastructure.Logging.Queue;
 using Omotemachi.Models.V1.Domain.Jester.Config;
 using Omotemachi.Services;
@@ -50,7 +50,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IPacksService, PacksService>();
         AddConfigServices(services);
 
-        services.AddScoped<IWebhookDispatcher, WebhookDispatcher>();
+        services.AddScoped<IWebhookDispatcher, LogDispatcher>();
         services.AddScoped<ILogsService, LogsService>();
         services.AddSingleton<ILogQueue, LogQueue>();
 

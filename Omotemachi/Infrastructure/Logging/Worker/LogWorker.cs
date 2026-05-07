@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Omotemachi.Infrastructure.Dispatchers.Webhooks;
+using Omotemachi.Infrastructure.Logging.Dispatcher;
 using Omotemachi.Infrastructure.Logging.Queue;
 using Omotemachi.Infrastructure.Persistance.AppContext;
 using Omotemachi.Models.V1.Domain.Jester.Config;

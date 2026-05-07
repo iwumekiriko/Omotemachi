@@ -1,14 +1,14 @@
 ﻿using Omotemachi.Models.V1.Domain.Jester.Config;
 using Omotemachi.Models.V1.Domain.Logs;
 
-namespace Omotemachi.Infrastructure.Dispatchers.Webhooks;
+namespace Omotemachi.Infrastructure.Logging.Dispatcher;
 
 public interface IWebhookDispatcher
 {
     Task DispatchAsync(LogEntry log, LogsConfig config);
 }
 
-public class WebhookDispatcher(
+public class LogDispatcher(
     IHttpClientFactory httpFactory
 ) : IWebhookDispatcher
 {

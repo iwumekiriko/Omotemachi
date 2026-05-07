@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Site\" />
+    <Folder Include="Infrastructure\Dispatchers\" />
     <Folder Include="Infrastructure\Persistance\Migrations\" />
     <Folder Include="Infrastructure\External\" />
     <Folder Include="Infrastructure\Persistance\Repositories\" />
