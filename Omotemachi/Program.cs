@@ -1,5 +1,6 @@
 using Asp.Versioning;
 using Omotemachi.Extensions;
+using Omotemachi.Tools;
 
 namespace Omotemachi;
 
@@ -49,6 +50,7 @@ public class Program
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
+        Console.WriteLine($"[{TimeConverter.GetCurrentTime()}] Application started!");
         app.Run();
     }
 }
