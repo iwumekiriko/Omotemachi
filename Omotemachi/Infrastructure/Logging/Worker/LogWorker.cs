@@ -111,6 +111,6 @@ public class LogWorker(
         Console.Write(log.Level.ToString().ToUpper());
         Console.ForegroundColor = originalColor;
 
-        Console.WriteLine($": {log.Message}");
+        Console.WriteLine($": {log.Message.Replace("\n", "\\n")}");
     }
 }
