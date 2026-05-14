@@ -13,4 +13,5 @@ public class ChannelsConfig(long guildId) : IConfig
     public long? GeneralChannelId { get; set; }
     public long? OfftopChannelId { get; set; }
     public long? NitroBoostingChannelId { get; set; }
+    public long? ImageSaverChannelId { get; set; }
 }
