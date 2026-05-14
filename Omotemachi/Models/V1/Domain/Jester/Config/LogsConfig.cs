@@ -26,9 +26,10 @@ public class LogsConfig(long guildId) : IConfig
             "message" => MessagesWebhookUrl,
             "ticket" => TicketsWebhookUrl,
             "guild" => GuildWebhookUrl,
-            "member" => MembersWebhookUrl,
+            "members" => MembersWebhookUrl,
             "voice" => VoiceWebhookUrl,
             _ => ElseWebhookUrl
         };
     }
 }
+    
