@@ -1,8 +1,9 @@
 ﻿using Omotemachi.Exceptions.Wacky.CCG;
-using Omotemachi.Models.V1.Wacky.CCG;
+using Omotemachi.Models.V1.Domain.Wacky.CCG;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Concurrent;
-using Omotemachi.DTOS.V1.Wacky;
+using Omotemachi.Models.V1.DTOs.Wacky;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Wacky;
 
@@ -15,9 +16,9 @@ public interface IPacksService
     Task<int> UpdateUserPackAmount(long guildId, long userId, int packId, int amount);
 }
 public class PacksService(
-    AppContext context,
+    AppDbContext context,
     ILogger<PacksService> logger
-) : ServiceBase(context, logger), IPacksService
+) : ServiceBase<PacksService>(context, logger), IPacksService
 {
     private readonly Random _random = new();
     private static readonly ConcurrentDictionary<int, Pack> _packsCache = new();

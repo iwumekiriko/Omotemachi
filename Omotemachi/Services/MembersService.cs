@@ -1,13 +1,15 @@
-﻿using Omotemachi.DTOS.V1.Jester;
-using Omotemachi.Exceptions.Jester.Members;
+﻿using Omotemachi.Exceptions.Jester.Members;
 using Omotemachi.Models.V1;
-using Omotemachi.Models.V1.Jester.Config;
-using Omotemachi.Models.V1.Jester.Settings;
-using Omotemachi.Models.V1.Jester.Top;
-using Omotemachi.Models.V1.Statistics;
 using Omotemachi.Services.Jester;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Omotemachi.Models.V1.Domain;
+using Omotemachi.Models.V1.Domain.Jester.Config;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Models.V1.Domain.Jester.Top;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Models.V1.DTOs.Jester;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services;
 
@@ -32,7 +34,7 @@ public interface IMembersService
 }
 
 public class MembersService(
-    AppContext context,
+    AppDbContext context,
     ILogger<MembersService> logger,
     IConfigService<ExperienceConfig> expConfigService,
     Dictionary<string, int> voiceSessions,
@@ -41,7 +43,7 @@ public class MembersService(
     IUserSettingsService userSettings,
     IDuetsService duetsService,
     IInventoryService inventoryService
-) : ServiceBase(context, logger), IMembersService
+) : ServiceBase<MembersService>(context, logger), IMembersService
 {
     private readonly IConfigService<ExperienceConfig> _expConfigService = expConfigService;
     private readonly Dictionary<string, int> _voiceSessions = voiceSessions;

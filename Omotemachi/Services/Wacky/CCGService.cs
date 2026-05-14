@@ -1,10 +1,11 @@
-﻿using Omotemachi.DTOS.V1.Wacky;
-using Omotemachi.Models.V1.Wacky.CCG;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Omotemachi.Exceptions.Wacky.CCG;
-using Omotemachi.Models.V1.Statistics;
 using Omotemachi.Tools;
 using Omotemachi.Exceptions.Wacky;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Models.V1.Domain.Wacky.CCG;
+using Omotemachi.Models.V1.DTOs.Wacky;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Wacky;
 
@@ -30,12 +31,12 @@ public interface ICCGService
     Task<List<UserCardDTO>> GetCardsFromPackAsync(long guildId, long userId, int packId, int packAmount);
 }
 public class CCGService(
-    AppContext context,
+    AppDbContext context,
     ILogger<CCGService> logger,
     IConfiguration config,
     IPacksService packService,
     IStatisticsService statistics
-) : ServiceBase(context, logger), ICCGService
+) : ServiceBase<CCGService>(context, logger), ICCGService
 {
     private readonly IConfiguration _config = config;
     private readonly IPacksService _packService = packService;

@@ -1,6 +1,7 @@
 ﻿using Omotemachi.Models.V1;
-using Omotemachi.Models.V1.Jester.Config;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Models.V1.Domain.Jester.Config;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -10,9 +11,9 @@ public interface IConfigService<T> where T : class, IConfig
     Task UpdateConfigAsync(T config);
 }
 public class ConfigService<T>(
-    AppContext context,
+    AppDbContext context,
     ILogger<ConfigService<T>> logger
-) : ServiceBase(context, logger), IConfigService<T> where T : class, IConfig
+) : ServiceBase<ConfigService<T>>(context, logger), IConfigService<T> where T : class, IConfig
 {
     public async Task<T> GetOrCreateConfigAsync(long guildId)
     {

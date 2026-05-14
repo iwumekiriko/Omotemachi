@@ -1,4 +1,4 @@
-﻿using Omotemachi.Models.V1.Jester.Items;
+﻿using Omotemachi.Models.V1.Domain.Jester.Items;
 
 namespace Omotemachi.Exceptions.Jester.Inventory;
 

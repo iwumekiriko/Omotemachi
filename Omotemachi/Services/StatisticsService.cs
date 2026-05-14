@@ -1,6 +1,7 @@
-﻿using Omotemachi.Models.V1.Statistics;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services;
 
@@ -16,9 +17,9 @@ public interface IStatisticsService
 }
 
 public class StatisticsService(
-    AppContext context,
+    AppDbContext context,
     ILogger<StatisticsService> logger
-) : ServiceBase(context, logger), IStatisticsService
+) : ServiceBase<StatisticsService>(context, logger), IStatisticsService
 {
     public async Task<T> GetStatistics<T>(long guildId, long userId) where T : BaseStatistics, new()
     {

@@ -1,12 +1,13 @@
 ﻿using Omotemachi.Exceptions.Jester.Quests;
-using Omotemachi.Models.V1.Jester.Items;
-using Omotemachi.Models.V1.Jester.Lootboxes;
-using Omotemachi.Models.V1.Jester.Quests;
-using Omotemachi.Models.V1.Jester.Settings;
-using Omotemachi.Models.V1.Statistics;
+using Omotemachi.Models.V1.Domain.Jester.Items;
 using Omotemachi.Services.Wacky;
 using Omotemachi.Tools;
 using Microsoft.EntityFrameworkCore;
+using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
+using Omotemachi.Models.V1.Domain.Jester.Quests;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Infrastructure.Persistance.AppContext;
 
 namespace Omotemachi.Services.Jester;
 
@@ -24,7 +25,7 @@ public interface IQuestsService
 }
 
 public class QuestsService(
-    AppContext context,
+    AppDbContext context,
     ILogger<QuestsService> logger,
     IMembersService membersService,
     IInventoryService inventoryService,
@@ -32,7 +33,7 @@ public class QuestsService(
     IStatisticsService statistics,
     IUserSettingsService uSettingsService,
     IPacksService packsService
-) : ServiceBase(context, logger), IQuestsService
+) : ServiceBase<QuestsService>(context, logger), IQuestsService
 {
     private readonly IConfiguration _config = config;
     private readonly IMembersService _membersService = membersService;

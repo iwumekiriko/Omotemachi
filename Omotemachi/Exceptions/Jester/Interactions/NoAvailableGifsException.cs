@@ -1,4 +1,4 @@
-﻿using Omotemachi.Models.V1.Jester.Interactions;
+﻿using Omotemachi.Models.V1.Domain.Jester.Interactions;
 
 namespace Omotemachi.Exceptions.Jester.Interactions;
 

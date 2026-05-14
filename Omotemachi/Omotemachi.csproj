@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Data\**" />
+    <Compile Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
     <Content Remove="Data\**" />
+    <Content Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
     <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
     <None Remove="Data\**" />
+    <None Remove="Infrastructure\Persistance\AppContext\Новая папка\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,24 +28,20 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.1" />
-    <PackageReference Include="SixLabors.Fonts" Version="2.1.3" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.8" />
-    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="TimeZoneConverter" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Fonts\Alegreya.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Controllers\Site\" />
-    <Folder Include="DTOS\V1\Site\" />
+    <Folder Include="Infrastructure\Dispatchers\" />
+    <Folder Include="Infrastructure\Persistance\Migrations\" />
+    <Folder Include="Infrastructure\External\" />
+    <Folder Include="Infrastructure\Persistance\Repositories\" />
+    <Folder Include="Models\V1\DTOs\Site\" />
     <Folder Include="Exceptions\Site\" />
-    <Folder Include="Models\V1\Site\" />
+    <Folder Include="Models\V1\Domain\Site\" />
+    <Folder Include="Models\V1\DTOs\V1\" />
     <Folder Include="Services\Site\" />
   </ItemGroup>
 

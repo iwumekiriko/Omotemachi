@@ -1,9 +1,9 @@
 ﻿using Asp.Versioning;
-using Omotemachi.DTOS.V1.Jester;
 using Omotemachi.Exceptions.Jester.Settings;
-using Omotemachi.Models.V1.Jester.Settings;
 using Omotemachi.Services.Jester;
 using Microsoft.AspNetCore.Mvc;
+using Omotemachi.Models.V1.Domain.Jester.Settings;
+using Omotemachi.Models.V1.DTOs.Jester;
 
 namespace Omotemachi.Controllers.Jester;
 

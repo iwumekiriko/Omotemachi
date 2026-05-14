@@ -1,16 +1,16 @@
 ﻿using Asp.Versioning;
 using Humanizer;
-using Omotemachi.DTOS.V1.Jester;
 using Omotemachi.Exceptions.Jester.Inventory;
-using Omotemachi.Models.V1.Jester.Items;
-using Omotemachi.Models.V1.Jester.Lootboxes;
 using Omotemachi.Services;
 using Omotemachi.Services.Jester;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
-using Omotemachi.Models.V1.Statistics;
 using Omotemachi.Services.Wacky;
 using System.Runtime.InteropServices;
+using Omotemachi.Models.V1.Domain.Jester.Items;
+using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
+using Omotemachi.Models.V1.Domain.Statistics;
+using Omotemachi.Models.V1.DTOs.Jester;
 
 namespace Omotemachi.Controllers.Jester;
 [ApiController]

@@ -1,4 +1,4 @@
-﻿using Omotemachi.Models.V1.Jester.Quests;
+﻿using Omotemachi.Models.V1.Domain.Jester.Quests;
 
 namespace Omotemachi.Exceptions.Jester.Quests;
 

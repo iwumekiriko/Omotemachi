@@ -1,4 +1,4 @@
-﻿using Omotemachi.Models.V1.Jester.Settings;
+﻿using Omotemachi.Models.V1.Domain.Jester.Settings;
 
 namespace Omotemachi.Exceptions.Jester.Settings;
 

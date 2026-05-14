@@ -1,4 +1,6 @@
-﻿using Omotemachi.Models.V1;
+﻿using Omotemachi.Infrastructure.Persistance.AppContext;
+using Omotemachi.Models.V1.Domain;
+using Omotemachi.Models.V1.Domain.Jester;
 
 namespace Omotemachi.Services.Jester;
 
@@ -9,10 +11,10 @@ public interface IEconomyService
 }
 
 public class EconomyService(
-    AppContext context,
+    AppDbContext context,
     ILogger<EconomyService> logger,
     IMembersService memberService
-) : ServiceBase(context, logger), IEconomyService
+) : ServiceBase<EconomyService>(context, logger), IEconomyService
 {
     private readonly IMembersService _memberService = memberService;
 
