@@ -13,10 +13,10 @@ public class LogsController(ILogsService logsService) : ControllerBase
 {
     private readonly ILogsService _logsService = logsService;
 
-    [HttpPost("logs")]
-    public async Task<IActionResult> CreateLog(LogDTO dto)
+    [HttpPost()]
+    public async Task<IActionResult> CreateLog([FromBody] LogDTO dto)
     {
         await _logsService.HandleAsync(dto);
-        return Ok();
+        return Ok(new { Success = true, Status = StatusCodes.Status200OK });
     }
 }
