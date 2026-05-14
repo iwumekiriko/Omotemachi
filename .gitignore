@@ -6,8 +6,6 @@ out/
 bin/
 obj/
 /obj/
-Migrations/
-/Migrations/
 uploads/
 node_modules/
 
