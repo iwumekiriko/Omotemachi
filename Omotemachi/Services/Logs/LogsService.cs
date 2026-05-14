@@ -32,7 +32,8 @@ public class LogsService(
             Category = dto.Category,
 
             AvatarUrl = dto.AvatarUrl,
-            UserId = dto.UserId
+            ImagesUrls = dto.ImagesUrls,
+            FilesUrls = dto.FilesUrls
         };
 
         _queue.Enqueue(log);

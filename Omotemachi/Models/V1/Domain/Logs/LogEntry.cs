@@ -16,6 +16,7 @@ public class LogEntry
     public required string Message { get; set; }
     public string? Category { get; set; }
 
-    public long? UserId { get; set; }
     public string? AvatarUrl { get; set; }
+    public string[] ImagesUrls { get; set; } = [];
+    public string[] FilesUrls { get; set; } = [];
 }

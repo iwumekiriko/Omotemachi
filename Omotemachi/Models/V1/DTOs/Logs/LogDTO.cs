@@ -8,12 +8,12 @@ namespace Omotemachi.Models.V1.DTOs.Logs;
 public class LogDTO
 {
     public long GuildId { get; set; } = 0;
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     public LogLevel Level { get; set; }
     public string Message { get; set; }
 
     public string Category { get; set; }
 
-    public long? UserId { get; set; }
     public string? AvatarUrl { get; set; }
+    public string[] ImagesUrls { get; set; } = [];
+    public string[] FilesUrls { get; set; } = [];
 }
