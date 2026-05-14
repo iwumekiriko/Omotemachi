@@ -43,11 +43,11 @@ public class Program
         System.AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
         if (app.Environment.IsDevelopment())
         {
+            app.UseHttpsRedirection();
             app.UseSwagger();
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
         Console.WriteLine($"[{TimeConverter.GetCurrentTime()}] Application started!");
