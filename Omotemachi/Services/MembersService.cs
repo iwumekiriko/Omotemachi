@@ -234,7 +234,7 @@ public class MembersService(
     {
         var uSetting = await _userSettings.GetUserSetting(
             member.GuildId, member.UserId, SettingTypes.ExpDisabling);
-        if (uSetting != null && !uSetting.State)
+        if (uSetting == null || !uSetting.State)
         {
             var expConfig = await _expConfigService.GetOrCreateConfigAsync(member.GuildId);
             var expToAdd = (expConfig.ExpForMessage ?? 3) * member.ExpMultiplier;
