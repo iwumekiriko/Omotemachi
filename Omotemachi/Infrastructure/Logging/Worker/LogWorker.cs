@@ -74,7 +74,7 @@ public class LogWorker(
     {
         return log.Source switch
         {
-            LogSource.Framework => log.Level >= LogLevel.Information,
+            LogSource.Framework => log.Level >= LogLevel.Warning,
             LogSource.Application => log.Level >= LogLevel.Debug,
             LogSource.External => log.Level >= LogLevel.Information,
             _ => false
