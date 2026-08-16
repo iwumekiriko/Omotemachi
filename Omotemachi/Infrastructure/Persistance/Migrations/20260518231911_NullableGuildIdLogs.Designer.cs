@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Omotemachi.Infrastructure.Persistance.AppContext;
@@ -12,9 +13,11 @@ using Omotemachi.Infrastructure.Persistance.AppContext;
 namespace Omotemachi.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260518231911_NullableGuildIdLogs")]
+    partial class NullableGuildIdLogs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -538,23 +541,6 @@ namespace Omotemachi.Infrastructure.Persistance.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("LootboxUserDatas");
-                });
-
-            modelBuilder.Entity("Omotemachi.Models.V1.Domain.Jester.OW.UserHeroProgress", b =>
-                {
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Progress")
-                        .IsRequired()
-                        .HasColumnType("jsonb");
-
-                    b.Property<DateTimeOffset>("UpdateAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("UserHeroProgresses");
                 });
 
             modelBuilder.Entity("Omotemachi.Models.V1.Domain.Jester.Quests.Quest", b =>
@@ -1695,17 +1681,6 @@ namespace Omotemachi.Infrastructure.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Guild");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Omotemachi.Models.V1.Domain.Jester.OW.UserHeroProgress", b =>
-                {
-                    b.HasOne("Omotemachi.Models.V1.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("User");
                 });
