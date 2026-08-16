@@ -24,60 +24,7 @@ public class MembersController(
     {
         return await _membersService.GetMemberDTOAsync(guildId, userId);
     }
-    //[HttpGet("profile")]
-    //public async Task<IActionResult> GetProfile(
-    //    long guildId, long userId,  
-    //    string avatar_url, string nickname)
-    //{
-    //    var member = await _membersService.GetMemberAsync(1299668096474157076, 567303956448018456);
 
-    //    var nicknameElement = new TextWithBackgroundElement
-    //    {
-    //        Offset = new PointF(0, 500),
-    //        Text = nickname,
-    //        FontSize = 150,
-    //        Anchor = AnchorPosition.Center,
-    //        TextHorizontalAlignment = HorizontalAlignment.Center,
-    //        TextVerticalAlignment = VerticalAlignment.Center,
-    //        Padding = 20,
-    //        BackgroundColor = Color.White.WithAlpha(0.5f),
-    //        TextColor = Color.White,
-    //        CornerRadius = 20,
-    //    };
-    //    var voiceInfoElement = new TextWithBackgroundElement
-    //    {
-    //        Anchor = AnchorPosition.CenterLeft,
-    //        Offset = new PointF(750, 0),
-    //        //Text = member.VoiceTime.ToString(),
-    //        TextHorizontalAlignment = HorizontalAlignment.Center,
-    //        TextVerticalAlignment = VerticalAlignment.Center,
-    //        Padding = 20,
-    //        FontSize = 150,
-    //        BackgroundColor = Color.White.WithAlpha(0.5f),
-    //        TextColor = Color.White,
-    //        CornerRadius = 20
-    //    };
-    //    var avatarElement = new ImageElement
-    //    {
-    //        Anchor = AnchorPosition.Center,
-    //        Offset = new PointF(0, -500),
-    //        ImageUrl = "https://i.imgur.com/xKICzua.jpeg",
-    //        CornerRadius = 50,
-    //    };
-
-    //    var elements = new List<CanvasElement>
-    //    {
-    //        nicknameElement,
-    //        voiceInfoElement,
-    //        avatarElement
-    //    };
-    //    return File(
-    //        await _renderer.RenderToStreamAsync(
-    //            "https://i.imgur.com/vQvRYX6.png",
-    //            elements,
-    //            SixLabors.ImageSharp.Formats.Png.PngFormat.Instance),
-    //        "image/png");
-    //}
     [HttpPut("join")]
     public async Task<IActionResult> Join(long guildId, long userId)
     {

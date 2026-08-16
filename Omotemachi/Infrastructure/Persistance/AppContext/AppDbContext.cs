@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
+using NuGet.Protocol;
 using Omotemachi.Models.V1;
 using Omotemachi.Models.V1.Domain;
 using Omotemachi.Models.V1.Domain.Jester;
@@ -10,6 +11,7 @@ using Omotemachi.Models.V1.Domain.Jester.Interactions;
 using Omotemachi.Models.V1.Domain.Jester.InventoryItems;
 using Omotemachi.Models.V1.Domain.Jester.Items;
 using Omotemachi.Models.V1.Domain.Jester.Lootboxes;
+using Omotemachi.Models.V1.Domain.Jester.OW;
 using Omotemachi.Models.V1.Domain.Jester.Quests;
 using Omotemachi.Models.V1.Domain.Jester.Settings;
 using Omotemachi.Models.V1.Domain.Jester.Shop;
@@ -17,6 +19,8 @@ using Omotemachi.Models.V1.Domain.Logs;
 using Omotemachi.Models.V1.Domain.Statistics;
 using Omotemachi.Models.V1.Domain.Wacky.Appa;
 using Omotemachi.Models.V1.Domain.Wacky.CCG;
+using System.Text.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Omotemachi.Infrastructure.Persistance.AppContext;
 
@@ -99,6 +103,9 @@ public class AppDbContext : DbContext
     public virtual DbSet<Quest> Quests { get; set; }
     public virtual DbSet<UserQuest> UserQuests { get; set; }
 
+    // OW
+    public virtual DbSet<UserHeroProgress> UserHeroProgresses { get; set; }
+
     // Statistics
     public virtual DbSet<DNDStatistics> DNDStatistics { get; set; }
     public virtual DbSet<DuetsStatistics> DuetsStatistics { get; set; }
@@ -150,6 +157,17 @@ public class AppDbContext : DbContext
             .HasKey(ua => new { ua.GuildId, ua.UserId, ua.AppaId });
         modelBuilder.Entity<TimeoutAppaCatch>()
             .HasKey(tac => new { tac.GuildId, tac.UserId });
+        modelBuilder.Entity<UserHeroProgress>(uhp =>
+        {
+            uhp.HasKey(x => x.UserId);
+            uhp.Property(x => x.Progress)
+                .HasColumnType("jsonb")
+                .HasConversion(
+                    v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
+                    v => JsonSerializer.Deserialize<HeroProgressData>(v, (JsonSerializerOptions?)null)!
+                );
+                
+        });
         modelBuilder.Entity<LootboxUserData>()
             .Property(b => b.Data)
             .HasConversion(

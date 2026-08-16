@@ -48,6 +48,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICCGService, CCGService>();
         services.AddScoped<IAppaService, AppaService>();
         services.AddScoped<IPacksService, PacksService>();
+        services.AddScoped<IOWService, OWService>();
         AddConfigServices(services);
 
         services.AddScoped<IWebhookDispatcher, LogDispatcher>();
