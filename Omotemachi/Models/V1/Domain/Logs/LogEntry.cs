@@ -11,7 +11,7 @@ public class LogEntry
     public DateTimeOffset TimeStamp { get; set; } = TimeConverter.GetCurrentTime();
 
     public LogSource Source { get; set; }
-    public long GuildId { get; set; }
+    public long? GuildId { get; set; }
     [ForeignKey("GuildId")]
     public Guild? Guild { get; set; }
 
