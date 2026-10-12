@@ -17,6 +17,6 @@ public class DefaultHeroes
 
     public static readonly string[] Support =
     {
-        "Ana", "Baptiste", "Brigitte", "Illari", "JETPACK CAT", "Juno", "Kiriko", "Lifeweaver", "LUCIO", "Mercy", "Mizuki", "Moira", "Wuyang", "Zenyatta"
+        "Ana", "Baptiste", "Brigitte", "Doctrine", "Illari", "JETPACK CAT", "Juno", "Kiriko", "Lifeweaver", "LUCIO", "Mercy", "Mizuki", "Moira", "Wuyang", "Zenyatta"
     };
 }
