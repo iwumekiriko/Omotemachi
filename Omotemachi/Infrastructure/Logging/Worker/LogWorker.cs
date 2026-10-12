@@ -28,15 +28,20 @@ public class LogWorker(
 
             using var scope = _services.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            var dispatcher = scope.ServiceProvider.GetRequiredService<IWebhookDispatcher>();
 
             if (IsDbLoggable(log))
                 await SaveLogAsync(context, log);
 
-            if (log.Source == LogSource.External && log.GuildId != 0)
+            if (log.Source == LogSource.External && log.GuildId is long guildId)
             {
-                var dispatcher = scope.ServiceProvider.GetRequiredService<IWebhookDispatcher>();
-                var config = await GetLogsConfigByGuild(context, log.GuildId);
-                await dispatcher.DispatchAsync(log, config);
+                var config = await GetLogsConfigByGuild(context, guildId);
+                await dispatcher.DiscordDispatchAsync(log, config);
+            }
+
+            if (log.Level >= LogLevel.Error)
+            {
+                await dispatcher.VkDispatchAsync(log);
             }
         }
     }

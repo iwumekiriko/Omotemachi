@@ -37,7 +37,7 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
             Level = MapLevel(logLevel),
             Source = GetSource(_categoryName),
             Category = _categoryName,
-            GuildId = 0
+            GuildId = null
         };
 
         _queue.Enqueue(log);
@@ -52,7 +52,7 @@ public class Logger(string categoryName, ILogQueue queue) : ILogger
             MsLogLevel.Information => AppLogLevel.Information,
             MsLogLevel.Warning => AppLogLevel.Warning,
             MsLogLevel.Error => AppLogLevel.Error,
-            MsLogLevel.Critical => AppLogLevel.Error,
+            MsLogLevel.Critical => AppLogLevel.Critical,
             _ => AppLogLevel.Information
         };
     }
