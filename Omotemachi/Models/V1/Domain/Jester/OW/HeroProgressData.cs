@@ -22,6 +22,14 @@ public class HeroProgressData
     }
     private static void Ensure(Dictionary<string, int> dict, string[] heroes)
     {
+        var currentHeroes = heroes.ToHashSet();
+
+        foreach (var key in dict.Keys.ToList())
+        {
+            if (!currentHeroes.Contains(key))
+                dict.Remove(key);
+        }
+
         foreach (var hero in heroes)
         {
             if (!dict.ContainsKey(hero))
