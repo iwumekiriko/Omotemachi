@@ -12,11 +12,11 @@ public class DefaultHeroes
 
     public static readonly string[] Damage =
     {
-        "Anran", "Ashe", "Bastion", "Cassidy", "Echo", "Emre", "Freja", "Genji", "Hanzo", "Junkrat", "Mei", "Pharah", "Reaper", "Shion", "Sierra", "Sojourn", "SOLDIER: 76", "Sombra", "Symmetra", "TORBJORN LINDHOLM", "Tracer", "Vendetta", "Venture", "Widowmaker"
+        "Anran", "Ashe", "Bastion", "Cassidy", "Echo", "Emre", "Freja", "Genji", "Hanzo", "Junkrat", "Mei", "Pharah", "Reaper", "Shion", "Sierra", "Sojourn", "SOLDIER: 76", "Symmetra", "TORBJORN LINDHOLM", "Tracer", "Vendetta", "Venture", "Widowmaker"
     };
 
     public static readonly string[] Support =
     {
-        "Ana", "Baptiste", "Brigitte", "Doctrine", "Illari", "JETPACK CAT", "Juno", "Kiriko", "Lifeweaver", "LUCIO", "Mercy", "Mizuki", "Moira", "Wuyang", "Zenyatta"
+        "Ana", "Baptiste", "Brigitte", "Doctrine", "Illari", "JETPACK CAT", "Juno", "Kiriko", "Lifeweaver", "LUCIO", "Mercy", "Mizuki", "Moira", "Sombra", "Wuyang", "Zenyatta"
     };
 }
